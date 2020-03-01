@@ -38,7 +38,7 @@ public class Java8Inaction {
 		
 		//book approach
 		List<Transaction> transaction2011Java8 = transactions.stream().filter(v -> v.getYear() == 2011).sorted(Comparator.comparing(v -> v.getValue())).collect(Collectors.toList());
-		transaction2011Java8.forEach(v -> System.out.println(v));
+		transaction2011Java8.forEach(v -> System.out.println("book approach Comparing" + v));
 		
 		//What are all the unique cities where the traders work?
 		List<String> distinctCity = transactions.stream().map(v -> v.getTrader().getCity()).distinct().collect(Collectors.toList());
