@@ -122,6 +122,36 @@ public class Java8Inaction {
 		  
 		  Integer reduce2 = Stream.iterate(0, n -> n + 1).limit(4).parallel().reduce(0, (a,b) -> a+b );
 		  System.out.println(reduce2);
+		
+		  //iterator - retrieve the element only from collections - iterator only in sequential order
+		  ArrayList<String> iteratorList = new ArrayList<>();
+		  list.add("A");
+		  list.add("B");
+		  list.add("C");
+		  list.add("D");
+		  list.add("E");
+		  list.add("F");
+
+		  Iterator<String> iterator = iteratorList.iterator();
+		  iterator.forEachRemaining(System.out::println);
+
+		  //Spliterator - retrieve the element from collections and streams - Iterate in sequential and parallel
+		  ArrayList<String> splIteratorList = new ArrayList<>();
+		  list.add("A");
+		  list.add("B");
+		  list.add("C");
+		  list.add("D");
+		  list.add("E");
+		  list.add("F");
+
+		  //parallel processing
+		  Spliterator<String> spliterator1 = splIteratorList.spliterator();
+		  Spliterator<String> spliterator2 = spliterator1.trySplit();
+
+		  spliterator1.forEachRemaining(System.out::println);
+		  System.out.println("========");
+		  spliterator2.forEachRemaining(System.out::println);
+
 	
 	}
 	
