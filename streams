@@ -1,3 +1,12 @@
+New functional interface introduced in JAVA 8:
+
+Predicate interface - boolean test(T t);
+Consumer interface - void accept(T t);
+Function interface - R apply(T t);
+BinaryOperator Interface - extends BiFunction Interface -  R apply(T t, U u);
+Supplier Interface - T get();
+
+
 Streams:
 
 Intermediate Operation:
