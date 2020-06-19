@@ -1,0 +1,56 @@
+Streams:
+
+Intermediate Operation:
+
+filter - takes Predicate
+map - takes Function
+	mapToInt - takes ToIntFunction
+	mapToLong - takes ToLongFunction
+	mapToDouble - takes ToDoubleFunction
+
+flatmap - takes Function
+
+sorted -  takes Comparator
+distinct -  takes Nothing
+limit(10) - picking up just two even numbers from our stream
+skip(2)   -  it skip first two values 
+peek()    - visualizing how stream operations behave and understanding the implications and interactions of complex intermediate stream operations
+
+Ternary Operation:
+
+Iteration:-
+forEach
+
+Arithmetics:-
+
+sum   -  finding the sum - it needs mapToInt. mapToInt(Integer::valueOf).sum(); mapToLong() and mapToDouble() methods to calculate the sums of longs and doubles.
+average - 
+reduce  -> takes Binary operator - reduce method is for doing manual aggregate functions instead of using default functions like sum, average etc..
+
+
+min ->    takes comparator -  same as sort or storted - but return type optional
+max ->    takes comparator - same as sort or sorted - but return type optional
+
+count -  Counting number of elements
+
+
+
+Validation:-
+anyMatch  ->  takes predicate - same as filter - but return type boolean
+allMatch() -> takes predicate - same as filter - but return type boolean value if all value pass the condition
+noneMatch() -> takes predicate - same as filter - but return type boolean. 
+
+findAny() -> takes nothing. Returns Optional. It is explicitly non-deterministic i.e, it is free to select any element in the stream.
+findFirst() -> takes nothing. Returns Optional. it gives first element of Stream
+
+
+Collect data in Collections Format:-
+toArray
+collect - takes Collector
+	Collectors.tolist
+	Collectors.toset
+	Collectors.grouping -
+	Collectors.reducing - takes BinaryOperator
+	Collectors.partitioningBy
+	
+
