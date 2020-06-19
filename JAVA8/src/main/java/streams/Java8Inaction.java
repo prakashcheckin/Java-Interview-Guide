@@ -36,6 +36,25 @@ public class Java8Inaction {
 		Collections.sort(transaction2011, (a , b)-> a.getValue() < b.getValue() ? -1 : 1 );
 		transaction2011.forEach(v -> System.out.println(v));
 		
+		 //Iterator Example
+		Iterator<Transaction> iterator = transaction2011.iterator();
+		while(iterator.hasNext()){
+		    System.out.println(iterator.next());
+		}
+
+		//List iterator can move forward and backword
+		ListIterator<Transaction> transactionListIterator = transaction2011.listIterator();
+		while(transactionListIterator.hasPrevious()){
+		    System.out.println(transactionListIterator.previous());
+		}
+
+		//Spliterator can be used to collections as well as streams
+		Spliterator<Transaction> spliterator = transaction2011.spliterator();
+		spliterator.forEachRemaining(transaction -> System.out.println(transaction));
+
+		//spliterator in streams
+		transactions.stream().filter(v -> v.getYear() == 2011).sorted(Comparator.comparing(v -> v.getValue())).spliterator().forEachRemaining(transaction -> System.out.println(transaction));
+		
 		//book approach
 		List<Transaction> transaction2011Java8 = transactions.stream().filter(v -> v.getYear() == 2011).sorted(Comparator.comparing(v -> v.getValue())).collect(Collectors.toList());
 		transaction2011Java8.forEach(v -> System.out.println("book approach Comparing" + v));
