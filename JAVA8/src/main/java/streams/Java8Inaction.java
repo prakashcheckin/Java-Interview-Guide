@@ -154,22 +154,24 @@ public class Java8Inaction {
 		  Iterator<String> iterator = iteratorList.iterator();
 		  iterator.forEachRemaining(System.out::println);
 
-		  //Spliterator - retrieve the element from collections and streams - Iterate in sequential and parallel
-		  ArrayList<String> splIteratorList = new ArrayList<>();
-		  list.add("A");
-		  list.add("B");
-		  list.add("C");
-		  list.add("D");
-		  list.add("E");
-		  list.add("F");
-
-		  //parallel processing
-		  Spliterator<String> spliterator1 = splIteratorList.spliterator();
-		  Spliterator<String> spliterator2 = spliterator1.trySplit();
-
-		  spliterator1.forEachRemaining(System.out::println);
 		  System.out.println("========");
-		  spliterator2.forEachRemaining(System.out::println);
+
+		  //Spliterator - it helps to split the list and iterate
+		  ArrayList<String> splIteratorList = new ArrayList<>();
+			splIteratorList.add("A");
+			splIteratorList.add("B");
+			splIteratorList.add("C");
+			splIteratorList.add("D");
+			splIteratorList.add("E");
+			splIteratorList.add("F");
+			
+		  Spliterator<String> secondHalf = splIteratorList.spliterator();
+		  //trySplit - returns the spliterator that no longer be covered  by invoking spliterator
+		  Spliterator<String> firstHalf = secondHalf.trySplit();
+
+		  secondHalf.forEachRemaining(System.out::println);
+		  System.out.println("========");
+		  firstHalf.forEachRemaining(System.out::println);
 
 	
 	}
