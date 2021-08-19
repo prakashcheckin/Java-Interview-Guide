@@ -172,6 +172,22 @@ public class Java8Inaction {
 		  secondHalf.forEachRemaining(System.out::println);
 		  System.out.println("========");
 		  firstHalf.forEachRemaining(System.out::println);
+		
+		//Java 8 – Sorting stream on multiple fields - Create comparators for multiple fields
+		
+		//first name comparator
+		Comparator<Employee> compareByFirstName = Comparator.comparing( Employee::getFirstName );
+
+		//last name comparator
+		Comparator<Employee> compareByLastName = Comparator.comparing( Employee::getLastName );
+
+		//Compare by first name and then last name (multiple fields)
+		Comparator<Employee> compareByFullName = compareByFirstName.thenComparing(compareByLastName);
+
+		//Using Comparator - pseudo code
+		list.stream().sorted( comparator ).collect();
+		
+		
 
 	
 	}
